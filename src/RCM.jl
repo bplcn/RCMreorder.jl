@@ -3,11 +3,16 @@ function AdjObtain(AMatrix::SparseMatrixCSC{Float64,Int64})
 This function can read the adjacency of sparse matrix A.
 """
     n = size(AMatrix,1);    l = size(AMatrix,2);
-    # adjacency = Array{Array,1}(undef,n);
-    # @inbounds @simd for krow = 1:n
-    #     
-    # end
-    adjacency = [AMatrix[krow,:].nzind for krow = 1:n];
+    adjacency = Array{Array,1}(undef,n);
+
+    ColArray = AMatrix.colptr;
+    RowArray = AMatrix.rowval;
+
+    @inbounds @simd for krow = 1:n
+        adjacency[krow] = RowArray[ColArray[krow]:(ColArray[krow+1]-1)];
+    end
+    # adjacency = [AMatrix[krow,1:n].nzind for krow = 1:n];
+
     return adjacency
 
 end
