@@ -13,9 +13,9 @@ julia>AMatrix[5,1] = 1;   AMatrix[5,3] = 1;   AMatrix[5,5] = 1;
 julia>AMatrix[6,2] = 1;   AMatrix[6,6] = 1;   AMatrix[6,8] = 1;
 julia>AMatrix[7,4] = 1;   AMatrix[7,7] = 1;
 julia>AMatrix[8,2] = 1;   AMatrix[8,6] = 1;   AMatrix[8,8] = 1;
-juliaadjacency = AdjObtain(AMatrix);
+julia>adjacency = AdjObtain(AMatrix);
 julia>neworder = RCM(adjacency);
-julia>spy(AMatrix)
-julia>spy(AMatrix[neworder,neworder])
+julia>spy(AMatrix);
+julia>spy(AMatrix[neworder,neworder]);
 
 ```
